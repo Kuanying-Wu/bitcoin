@@ -11,15 +11,10 @@ def reload_module(mode_name):
     ib.reload(mode_name)
 ib.reload(plot)
 
-# 更新的繪圖函數，假設 A 現在是文字，例如 "BTC"
-def plot_function(A):
-    # 在這裡你可以根據 A 的值來選擇不同的數據或圖表
-    # data = sns.load_dataset("iris")  # 使用 seaborn 的 Iris 數據集作為例子
-    # plt.figure(figsize=(6, 4))
-    # sns.scatterplot(data=data, x="sepal_length", y="sepal_width", hue="species")
-    # plt.title(f"Plot for {A}")  # 在標題中顯示 A 的值
-    # plt.tight_layout()
-    plot.Manager('BTC').main()
+
+def plot_function(coin_type, remain_coin):
+    
+    plot.Manager(coin_type).main(remain_coin)
     plt.tight_layout()
     return plt.gcf()  # 返回當前的圖表對象
 
@@ -32,26 +27,34 @@ class PlotApp:
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         # 輸入提示和輸入框
-        self.label = tk.Label(root, text="請輸入查找對象(例如: BTC):")
-        self.label.grid(row=0, column=0, padx=10, pady=5, sticky='w')
+        self.label1 = tk.Label(root, text="請輸入查找幣(例如: BTC):")
+        self.label1.grid(row=0, column=0, padx=5, pady=5, sticky='w')
         
-        self.entry = tk.Entry(root)
-        self.entry.grid(row=0, column=1, padx=10, pady=5, sticky='w')
+        self.entry1 = tk.Entry(root)
+        self.entry1.grid(row=0, column=1, padx=5, pady=5, sticky='w')
+
+        # 投入幣數量
+        self.label2 = tk.Label(root, text="請輸入剩餘可投入幣數量:")
+        self.label2.grid(row=1, column=0, padx=5, pady=5, sticky='w')
+
+        self.entry2 = tk.Entry(root)
+        self.entry2.grid(row=1, column=1, padx=5, pady=5, sticky='w')
 
         # 繪圖按鈕
         self.plot_button = tk.Button(root, text="繪圖", command=self.plot_graph)
-        self.plot_button.grid(row=1, column=0, columnspan=2, padx=10, pady=5)
+        self.plot_button.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
         
         # 圖片顯示區域
         self.image_canvas = tk.Canvas(root, width=640, height=480, bg='white')
-        self.image_canvas.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
+        self.image_canvas.grid(row=3, column=0, columnspan=2, padx=10, pady=5)
 
     def plot_graph(self):
         try:
-            A = self.entry.get()  # 獲取輸入的文字 A
-            if not A:
+            coin_type = self.entry1.get() 
+            remain_coin = float(self.entry2.get())
+            if not coin_type or not remain_coin:
                 raise ValueError("輸入不能為空")  # 檢查是否為空輸入
-            fig = plot_function(A)  # 調用繪圖函數
+            fig = plot_function(coin_type, remain_coin)  # 調用繪圖函數
             buf = BytesIO()
             fig.savefig(buf, format='png')
             buf.seek(0)
