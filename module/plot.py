@@ -38,15 +38,16 @@ class Manager:
         low_list = [buy_price, buy_coin, 'BUY'] if buy_price < sell_price else [sell_price, sell_coin, 'SELL']
         least_benefit, now_benefit, now_coin = self.calculate_benefit(buy_price, buy_coin, sell_price, sell_coin)
         
-        plt.figure(figsize=(5, 7))
+        plt.figure(figsize=(6,4))
         plt.plot([0.5, 0.5], [0, 1], color='black', linewidth=2)
         plt.plot(0.5, 0.8, 'ro')  # 賣出點
         plt.plot(0.5, 0.2, 'go')  # 買入點
         plt.text(0.51, 0.8, f'{upper_list[2]} \n Average_price : {upper_list[0]:.4f} \n num of coin : {upper_list[1]}', fontsize=12, verticalalignment='center')
+        plt.text(0.51, 0.5, f'lowest benefit point(USDT) : {least_benefit}\n current profit(USDT):{now_benefit}\n remain coin({coin_type}) : {now_coin}', fontsize=12, verticalalignment='center')
         plt.text(0.51, 0.2, f'{low_list[2]} \n Average_price : {low_list[0]:.4f} \n num of coin : {low_list[1]}', fontsize=12, verticalalignment='center')
         plt.title(coin_type)
         plt.axis('off')
-        plt.show()
+        # plt.show()
     
     def calculate_benefit(self, buy_price=0, buy_coin=0, sell_price=0, sell_coin=0, coin_type='BTC'):
         sum_buy = buy_price * buy_coin
@@ -58,13 +59,12 @@ class Manager:
         data = [least_benefit, now_benefit, now_coin]
         index = [f'最低買點(USDT)', f'目前利潤(USDT)', f'剩餘coin({coin_type})']
         
-        print(pd.DataFrame(data, index=index, columns=['Value']))
+        # print(pd.DataFrame(data, index=index, columns=['Value']))
         return least_benefit, now_benefit, now_coin
 
     def main(self):
         df = self.__read_excel()
         buy_price, buy_coin, sell_price, sell_coin, coin_type = self.__get_info(df)
         self.__trade_image(buy_price, buy_coin, sell_price, sell_coin, coin_type)
-        return df.shape
 
 

@@ -22,11 +22,11 @@ def trade_image(buy_price, buy_coin, sell_price, sell_coin, title=None, coin_typ
     least_benefit, now_benefit, now_coin = calculate_benefit(buy_price, buy_coin, sell_price, sell_coin)
     
     plt.figure(figsize=(5, 7))
-    plt.plot([0.5, 0.5], [0, 1], color='black', linewidth=2)
-    plt.plot(0.5, 0.8, 'ro')  # 賣出點
-    plt.plot(0.5, 0.2, 'go')  # 買入點
-    plt.text(0.51, 0.8, f'{upper_list[2]} \n Average_price : {upper_list[0]:.4f} \n num of coin : {upper_list[1]}', fontsize=12, verticalalignment='center')
-    plt.text(0.51, 0.2, f'{low_list[2]} \n Average_price : {low_list[0]:.4f} \n num of coin : {low_list[1]}', fontsize=12, verticalalignment='center')
+    plt.plot([0.2, 0.2], [0, 1], color='black', linewidth=2)
+    plt.plot(0.2, 0.8, 'ro')  # 賣出點
+    plt.plot(0.2, 0.2, 'go')  # 買入點
+    plt.text(0.21, 0.8, f'{upper_list[2]} \n Average_price : {upper_list[0]:.4f} \n num of coin : {upper_list[1]}', fontsize=12, verticalalignment='center')
+    plt.text(0.21, 0.2, f'{low_list[2]} \n Average_price : {low_list[0]:.4f} \n num of coin : {low_list[1]}', fontsize=12, verticalalignment='center')
     plt.title(coin_type)
     plt.axis('off')
     plt.show()
