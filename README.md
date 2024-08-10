@@ -24,6 +24,7 @@
 - num_deal(USDT)
 - num_deal_fixed(USDT)
 - is_sell
+- =IF(F2=0, D2*1.0005, D2*0.9995) 記得改數字
 
 ![教學圖](pic.png)
 - 之後記帳用excel紀錄，編輯完成記得Ctrl+s儲存
