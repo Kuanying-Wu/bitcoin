@@ -1,1 +1,0 @@
-python center.py
