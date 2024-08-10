@@ -18,5 +18,6 @@
 - 之後記帳用excel紀錄
 
 ## STEP.3 圖表 
+- 點擊 execute.bat
 ![教學圖](pic2.png)
 
