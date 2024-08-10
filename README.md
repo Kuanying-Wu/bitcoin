@@ -16,7 +16,7 @@
 - 輸入 git clone https://github.com/Kuanying-Wu/bitcoin
 - 在bitcoin資料夾中新增一個excel文件(欄位寫法如圖，注意文字大小寫不能有錯)，檔名為record.xlsx(注意不能有錯)
 ![教學圖](pic.png)
-- 之後記帳用excel紀錄
+- 之後記帳用excel紀錄，編輯完成記得Ctrl+s儲存
 
 ## STEP.3 圖表 
 - 點擊 execute.bat
