@@ -7,7 +7,7 @@
 
 - [點我前往連結](https://git-scm.com/download/win)
 - 根據電腦規格選擇下載64bit或32bit
-![教學圖](pic1,png)
+![教學圖](pic1.png)
 
 
 ## STEP.2 下載資料
