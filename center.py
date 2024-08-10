@@ -50,9 +50,9 @@ class PlotApp:
 
     def plot_graph(self):
         try:
-            coin_type = self.entry1.get() 
+            coin_type = self.entry1.get()
             remain_coin = float(self.entry2.get())
-            if not coin_type or not remain_coin:
+            if not coin_type :
                 raise ValueError("輸入不能為空")  # 檢查是否為空輸入
             fig = plot_function(coin_type, remain_coin)  # 調用繪圖函數
             buf = BytesIO()
