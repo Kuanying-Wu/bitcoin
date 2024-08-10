@@ -52,8 +52,12 @@ class Manager:
     def calculate_benefit(self, remain_coin, buy_price=0, buy_coin=0, sell_price=0, sell_coin=0, coin_type='BTC'):
         sum_buy = buy_price * buy_coin
         sum_sell = sell_price * sell_coin
+<<<<<<< HEAD
         least_benefit = abs(sum_sell - sum_buy) / remain_coin if sum_buy > sum_sell and remain_coin != 0 else 'No lower limit for take profit'
         least_benefit = '-' if remain_coin == 0 else None
+=======
+        least_benefit = abs(sum_sell - sum_buy) / remain_coin if sum_buy > sum_sell else 'No lower limit for take profit'
+>>>>>>> e475a4c1640bba637a42ac7178a26279e9fedc44
         now_benefit = sum_sell - sum_buy
         now_coin = buy_coin - sell_coin
     

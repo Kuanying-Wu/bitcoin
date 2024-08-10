@@ -52,7 +52,11 @@ class PlotApp:
         try:
             coin_type = self.entry1.get()
             remain_coin = float(self.entry2.get())
+<<<<<<< HEAD
             if not coin_type :
+=======
+            if not coin_type or not remain_coin:
+>>>>>>> e475a4c1640bba637a42ac7178a26279e9fedc44
                 raise ValueError("輸入不能為空")  # 檢查是否為空輸入
             fig = plot_function(coin_type, remain_coin)  # 調用繪圖函數
             buf = BytesIO()
