@@ -21,9 +21,9 @@ class Manager:
         return df_buy, df_sell
 
     def __calculate_cost(self, df):
-        coin = df['num_order(coin)'].sum()
-        sum_deal = df['num_deal_fixed(USDT)'].sum()
-        price = (df['average_price(USDT)'] * df['num_deal_fixed(USDT)']).sum() / sum_deal
+        coin = df['num_order(coin)'].sum() if df.shape[0] != 0 else 0
+        sum_deal = df['num_deal_fixed(USDT)'].sum() if df.shape[0] != 0 else 1
+        price = ((df['average_price(USDT)'] * df['num_deal_fixed(USDT)']).sum() / sum_deal) if df.shape[0] != 0 else 0
         return price, coin
 
     def __get_info(self, df):
@@ -53,9 +53,9 @@ class Manager:
         sum_buy = buy_price * buy_coin
         sum_sell = sell_price * sell_coin
 
-        least_benefit = abs(sum_sell - sum_buy) / remain_coin if sum_buy > sum_sell and remain_coin != 0 else 'No lower limit for take profit'
+        least_benefit = abs(sum_sell - sum_buy) / remain_coin if sum_buy > sum_sell and remain_coin != 0 else 'No lower limit'
         least_benefit = '-' if remain_coin == 0 else least_benefit
-        now_benefit = sum_sell - sum_buy
+        now_benefit = sum_sell - sum_buy 
         now_coin = buy_coin - sell_coin
     
         data = [least_benefit, now_benefit, now_coin]
