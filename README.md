@@ -6,7 +6,7 @@
 
 # 使用教學
 
-## STEP.1 安裝git
+## STEP.1 安裝git (請確認已安裝python)
 
 - [點我前往連結](https://git-scm.com/download/win)
 - 根據電腦規格選擇下載64bit或32bit
